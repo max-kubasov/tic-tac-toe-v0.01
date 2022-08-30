@@ -123,7 +123,7 @@ public class TicTacToe {
     }
 
     /////////////////////////////ДОПИСАТЬ////////////////////////////////////////
-    private static boolean makeComputerMoveAI(char[][] gameTable) {
+    private static boolean makeComputerMoveAIOld(char[][] gameTable) {
 
         if (gameTable[0][0] == 'X' && gameTable[0][2] == 'X' && gameTable[0][1] == ' ') {
             gameTable[0][1] = 'O';
@@ -159,6 +159,63 @@ public class TicTacToe {
             return false;
         }
         return true;
+    }
+
+    private static boolean makeComputerMoveAI(char[][] gameTable) {
+
+        //for row check
+        for (int i = 0; i < 3; i++) {
+            if (gameTable[i][0] == 'X' && gameTable[i][1] == 'X' && gameTable[i][2] == ' ') {
+                gameTable[i][2] = 'O';
+                return true;
+            } else if (gameTable[i][0] == 'X' && gameTable[i][1] == ' ' && gameTable[i][2] == 'X') {
+                gameTable[i][1] = 'O';
+                return true;
+            } else if (gameTable[i][0] == ' ' && gameTable[i][1] == 'X' && gameTable[i][2] == 'X') {
+                gameTable[i][0] = 'O';
+                return true;
+            }
+        }
+
+        //for col check
+        for (int i = 0; i < 3; i++) {
+            if (gameTable[0][i] == 'X' && gameTable[1][i] == 'X' && gameTable[2][i] == ' ') {
+                gameTable[2][i] = 'O';
+                return true;
+            } else if (gameTable[0][i] == 'X' && gameTable[1][i] == ' ' && gameTable[2][i] == 'X') {
+                gameTable[1][i] = 'O';
+                return true;
+            } else if (gameTable[0][i] == 'X' && gameTable[1][i] == 'X' && gameTable[2][i] == 'X') {
+                gameTable[0][i] = 'O';
+                return true;
+            }
+        }
+
+        //for diagonals check
+        if (gameTable[0][0] == 'X' && gameTable[1][1] == 'X' && gameTable[2][2] == ' ') {
+            gameTable[2][2] = 'O';
+            return true;
+        } else if (gameTable[0][0] == 'X' && gameTable[1][1] == ' ' && gameTable[2][2] == 'X') {
+            gameTable[1][1] = 'O';
+            return true;
+        } else if (gameTable[0][0] == ' ' && gameTable[1][1] == 'X' && gameTable[2][2] == 'X') {
+            gameTable[0][0] = 'O';
+            return true;
+        } else if (gameTable[0][2] == 'X' && gameTable[1][1] == 'X' && gameTable[2][0] == ' ') {
+            gameTable[2][0] = 'O';
+            return true;
+        } else if (gameTable[0][2] == 'X' && gameTable[1][1] == ' ' && gameTable[2][0] == 'X') {
+            gameTable[1][1] = 'O';
+            return true;
+        } else if (gameTable[0][2] == ' ' && gameTable[1][1] == 'X' && gameTable[2][0] == 'X') {
+            gameTable[0][2] = 'O';
+            return true;
+        } else {
+            return false;
+        }
+
+
+
     }
     ///////////////////////////////////////////////////////////////////////////////////////
 
